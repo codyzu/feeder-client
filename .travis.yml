@@ -1,4 +1,5 @@
 language: node_js
+cache: yarn
 before_install:
   - openssl aes-256-cbc -K $encrypted_12c8071d2874_key -iv $encrypted_12c8071d2874_iv
     -in travis.env.enc -out .env -d
@@ -7,3 +8,4 @@ deploy:
   token:
     secure: 'ITGrSKDyWAhZKt5B1MR2PVgu4cDOqzzlBoUNQolf0JDW8xfvK3ilgQiX5zhkSU6dp6ilduBx/LkKks5gpGICmDOmwIYbjd5V5iea0LUKZEx/zIrN367t8oHOuE/LkkVzW0M9C0g4WzTb5a9KxVlB3nz/TCMJ0F9nTrm6WMhXRaC9Rnjq5yqxRIpBBQtlDzDHUYrofAoSh7idojD7aKchUK3J3HYEUKBg+AB/5lKGROKoNFaVbgcX6MJTEPMwf2zGP19QQNRm4o1zgE2p+vEcFu+B7O4FgwS1JSChjbO7EP8IwmM+z1dToF7PX+ruvsCdbstrffcXjMDiBxqbhjbVg+rryson06XTJ2vwdTTIhM5lvdH+QnwHm3qgP0J1Qb4kzqqRO+LShLEv03v1EHcB3JxDvlSs5tx2MoTWTBCok89LY/HMNnFrm3NHjShLtqjkF/z7Vm1UZ13xqxfUjIiAOCydmiR0WscQ7FjYm07N+xzt8/w7uXvz3MXXJJxY/aWU95ajoRmm29QlgII7ECgQJimLG3IeZiVPnwRs5+OEZVgFqTuw/VCAbMHoCgn/OfOvc1fYlPbbpbeWX8SNtof6hNXNjuIj/S64RM4PsFD32w9LSmvl7CcGSqwVQirjOb5tkUmEtiHM3KjELPFTpnYESbotDotOh9ILLRPfGK6uVTE='
   project: 'feeder-88e0a'
+  skip_cleanup: true
