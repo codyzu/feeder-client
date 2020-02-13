@@ -5,3 +5,9 @@
  */
 
 // You can delete this file if you're not using it
+// import React from "react"
+// import UserProvider from "./src/components/UserProviderServer"
+
+// export function wrapRootElement({element}) {
+//   return <UserProvider>{element}</UserProvider>
+// }
