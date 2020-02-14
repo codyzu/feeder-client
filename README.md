@@ -1,4 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+
+[![Build Status](https://travis-ci.org/codyzu/feeder-client.svg?branch=master)](https://travis-ci.org/codyzu/feeder-client)
+
 <p align="center">
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
