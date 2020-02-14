@@ -33,8 +33,18 @@ const Header = ({siteTitle, ...props}) => {
           <NavbarBrand href="#">{siteTitle}</NavbarBrand>
           <Nav navbar className="mr-auto">
             <NavItem>
-              <Link to="/" className="nav-link" activeClassName="active">
-                Results
+              <Link to="/feed" className="nav-link" activeClassName="active">
+                feed
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/log" className="nav-link" activeClassName="active">
+                log
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/run" className="nav-link" activeClassName="active">
+                command
               </Link>
             </NavItem>
             {/* <Link to="/vote" className="nav-link" activeClassName="active">
