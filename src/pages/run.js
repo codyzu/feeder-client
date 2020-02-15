@@ -12,14 +12,15 @@ import {
   FormFeedback,
   Alert,
 } from 'reactstrap'
-// import {ReactstrapInput} from "reactstrap-formik"
-import {DateTime} from 'luxon'
+// Import {ReactstrapInput} from "reactstrap-formik"
+// import {DateTime} from 'luxon'
 import * as Yup from 'yup'
 import {FirebaseContext} from 'gatsby-plugin-firebase'
 
 import Layout from '../components/Layout'
 import Seo from '../components/Seo'
-// import UserContext from '../user-context'
+import runCommand from '../commands'
+// Import UserContext from '../user-context'
 // import firestore from '../firebase-firestore'
 // import ReactstarpFormikInput from "reactstrap-formik/dist/ReactstrapFormikInput"
 
@@ -48,24 +49,25 @@ const RunPage = () => {
     try {
       const options = JSON.parse(optionsString)
 
-      const commandData = {
-        command,
-        options,
-        isPending: true,
-        createdAt: new Date(),
-        expiresAt: DateTime.local()
-          .plus({minutes: 10})
-          .toJSDate(),
-      }
+      // Const commandData = {
+      //   command,
+      //   options,
+      //   isPending: true,
+      //   createdAt: new Date(),
+      //   expiresAt: DateTime.local()
+      //     .plus({minutes: 10})
+      //     .toJSDate(),
+      // }
 
-      console.log('WRITING:', commandData)
+      // console.log('WRITING:', commandData)
 
-      await firebase
-        .firestore()
-        .collection('commands')
-        .doc()
-        .set(commandData)
+      // await firebase
+      //   .firestore()
+      //   .collection('commands')
+      //   .doc()
+      //   .set(commandData)
 
+      await runCommand(firebase, {command, options})
       resetForm()
 
       setAlert({
