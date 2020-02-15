@@ -7,7 +7,7 @@ import {useFirebase} from 'gatsby-plugin-firebase'
 import Layout from '../components/Layout'
 import Seo from '../components/Seo'
 import UserContext from '../user-context'
-// import firestore from "../firebase-firestore"
+// Import firestore from "../firebase-firestore"
 
 const LogPage = () => {
   const user = useContext(UserContext)
@@ -22,7 +22,7 @@ const LogPage = () => {
       return firebase
         .firestore()
         .collection('commands')
-        .orderBy('createdAt')
+        .orderBy('createdAt', 'desc')
         .onSnapshot(snapshots => {
           setLogData(
             snapshots.docs.map(snapshot => ({
