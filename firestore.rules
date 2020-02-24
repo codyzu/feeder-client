@@ -22,14 +22,11 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
     
-    // Feedings can be read by anyone
-    // Only admins can write
-    match /feedings/{document} {
-    	allow read: if true;
-    	allow write: if isAdmin();
+    match /jobs/{document} {
+    	allow read, write: if (isAdmin() || isFeeder());
     }
-    
-    match /commands/{document} {
+
+    match /jobsSchedule/{document} {
     	allow read, write: if (isAdmin() || isFeeder());
     }
   }

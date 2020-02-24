@@ -15,7 +15,7 @@ async function runCommand(firebase, {command, options}) {
 
   await firebase
     .firestore()
-    .collection('commands')
+    .collection('jobs')
     .doc()
     .set(commandData)
 }

@@ -1,7 +1,7 @@
 {
   "indexes": [
     {
-      "collectionGroup": "commands",
+      "collectionGroup": "jobs",
       "queryScope": "COLLECTION",
       "fields": [
         {
