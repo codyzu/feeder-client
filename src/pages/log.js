@@ -21,7 +21,7 @@ const LogPage = () => {
 
       return firebase
         .firestore()
-        .collection('commands')
+        .collection('jobs')
         .orderBy('createdAt', 'desc')
         .onSnapshot(snapshots => {
           setLogData(
