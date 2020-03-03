@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useContext, useState} from 'react'
 import {Link} from 'gatsby'
 import {Table, Row} from 'reactstrap'
 import {DateTime} from 'luxon'
@@ -23,6 +23,7 @@ const LogPage = () => {
         .firestore()
         .collection('jobs')
         .orderBy('createdAt', 'desc')
+        .limit(20)
         .onSnapshot(snapshots => {
           setLogData(
             snapshots.docs.map(snapshot => ({
@@ -49,51 +50,63 @@ const LogPage = () => {
               <th>created</th>
               <th>completed</th>
               <th>status</th>
+              <th>options</th>
             </tr>
           </thead>
           <tbody>
             {logData.map(({id, data}) => {
-              const isPending = data.isPending === true
-              const isExpired = data.isExpired === true
-              const isError = data.error !== undefined
-              const isSuccess = data.isSuccess === true
-              const status = isPending
-                ? 'pending'
-                : isExpired
-                ? `expired: ${
-                    data.expiresAt
-                      ? DateTime.fromJSDate(
-                          data.expiresAt.toDate()
-                        ).toLocaleString(DateTime.DATETIME_SHORT)
-                      : ''
-                  }`
-                : isError
-                ? data.error
-                : 'success'
+              const {
+                isPending,
+                isExpired,
+                error,
+                isSuccess,
+                expiresAt,
+                createdAt,
+                doneAt,
+                command,
+                ...other
+              } = data
 
-              const textClass = isExpired
-                ? 'text-warning'
-                : isError
-                ? 'text-danger'
-                : isSuccess
-                ? 'text-success'
-                : ''
+              const status =
+                isPending === true
+                  ? 'pending'
+                  : isExpired === true
+                  ? `expired: ${
+                      expiresAt === undefined
+                        ? ''
+                        : DateTime.fromJSDate(
+                            expiresAt.toDate()
+                          ).toLocaleString(DateTime.DATETIME_SHORT)
+                    }`
+                  : error === undefined
+                  ? 'success'
+                  : error
+
+              const textClass =
+                isExpired === true
+                  ? 'text-warning'
+                  : isSuccess === true
+                  ? 'text-success'
+                  : error === undefined
+                  ? ''
+                  : 'text-danger'
 
               return (
                 <tr key={id} className={textClass}>
-                  <td>{data.command}</td>
+                  <td>{command}</td>
                   <td>
-                    {DateTime.fromJSDate(
-                      data.createdAt.toDate()
-                    ).toLocaleString(DateTime.DATETIME_SHORT)}
+                    {DateTime.fromJSDate(createdAt.toDate()).toLocaleString(
+                      DateTime.DATETIME_SHORT
+                    )}
                   </td>
                   <td>
                     {data.doneAt &&
-                      DateTime.fromJSDate(data.doneAt.toDate()).toLocaleString(
+                      DateTime.fromJSDate(doneAt.toDate()).toLocaleString(
                         DateTime.DATETIME_SHORT
                       )}
                   </td>
                   <td>{status}</td>
+                  <td>{String(other)}</td>
                 </tr>
               )
             })}
