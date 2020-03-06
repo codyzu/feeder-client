@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import {Table, Row, Col} from 'reactstrap'
 import {DateTime} from 'luxon'
 import {useFirebase} from 'gatsby-plugin-firebase'
-import ReactJson from 'react-json-view'
+// import ReactJson from 'react-json-view'
 
 import Layout from '../components/Layout'
 import Seo from '../components/Seo'
@@ -112,12 +112,13 @@ const LogPage = () => {
                     </td>
                     <td>{status}</td>
                     <td>
-                      <ReactJson
+                      {/* <ReactJson
                         src={other}
                         collapsed
                         name={false}
                         displayDataTypes={false}
-                      />
+                      /> */}
+                      {JSON.stringify(other, null, 2)}
                     </td>
                   </tr>
                 )
