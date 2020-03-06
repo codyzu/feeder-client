@@ -11,7 +11,8 @@ import {useStaticQuery, graphql} from 'gatsby'
 
 import {Container, Row, Col} from 'reactstrap'
 import Header from './Header'
-import 'bootswatch/dist/materia/bootstrap.css' // eslint-disable-line import/no-unassigned-import
+import './styles.scss' // eslint-disable-line import/no-unassigned-import
+// import 'bootswatch/dist/materia/bootstrap.css' // eslint-disable-line import/no-unassigned-import
 // import 'bootstrap/dist/css/bootstrap.css' // eslint-disable-line import/no-unassigned-import
 
 const Layout = ({children}) => {
