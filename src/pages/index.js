@@ -29,7 +29,6 @@ const Dashboard = () => {
           commands={[
             <Button
               key="big-feed"
-              color="primary"
               className="w-100"
               size="lg"
               onClick={() =>
@@ -45,7 +44,6 @@ const Dashboard = () => {
             </Button>,
             <Button
               key="small-feed"
-              color="primary"
               className="w-100"
               size="lg"
               onClick={() =>
@@ -66,7 +64,6 @@ const Dashboard = () => {
           commands={[
             <Button
               key="take-photo"
-              color="primary"
               className="w-100"
               size="lg"
               onClick={() => console.log('RESTART')}
@@ -82,7 +79,6 @@ const Dashboard = () => {
           commands={[
             <ConfirmButton
               key="restart"
-              color="primary"
               className="w-100"
               size="lg"
               onClick={() => console.log('RESTART')}
@@ -90,12 +86,7 @@ const Dashboard = () => {
               <IoMdRefresh className="mr-2" />
               Restart
             </ConfirmButton>,
-            <ConfirmButton
-              key="shutdown"
-              className="w-100"
-              size="lg"
-              color="primary"
-            >
+            <ConfirmButton key="shutdown" className="w-100" size="lg">
               <FaPowerOff className="mr-2" />
               Shutdown
             </ConfirmButton>,

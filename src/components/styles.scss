@@ -1,6 +1,22 @@
 // $blue: rgb(33, 114, 243) !default;
 // $body-color: $blue !default;
 
+$baby-blue: #88e1f2;
+$off-white: #f9f8eb;
+$olive-green: #76b39d;
+$almost-black: #05004e;
+$orange: #fd5f00;
+$rust-red: #d63447;
+
+$primary: $baby-blue !default;
+$secondary: $off-white !default;
+$success: $olive-green !default;
+// $info: $cyan !default;
+$warning: $orange !default;
+$danger: $rust-red !default;
+$light: $off-white !default;
+$dark: $almost-black !default;
+
 @import '~bootswatch/dist/materia/variables';
 @import '~bootstrap/scss/bootstrap';
 @import '~bootswatch/dist/materia/bootswatch';

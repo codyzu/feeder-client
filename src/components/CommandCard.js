@@ -7,10 +7,10 @@ const CommandCard = ({HeaderIcon, headerText, commands}) => {
     <Col className="mb-4">
       <Card className="text-center">
         <CardHeader>
-          <p className="text-primary">
+          <p className="text-success">
             <HeaderIcon size="5em" />
           </p>
-          <h3 className="text-primary">{headerText}</h3>
+          <h3 className="">{headerText}</h3>
         </CardHeader>
         {commands.map(command => (
           <CardBody>{command}</CardBody>

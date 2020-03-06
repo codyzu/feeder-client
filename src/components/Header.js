@@ -28,7 +28,7 @@ const Header = ({siteTitle, ...props}) => {
 
   return (
     <header>
-      <Navbar dark color="primary" expand="xs">
+      <Navbar dark color="dark" expand="xs">
         <Container>
           <NavbarBrand href="/">{siteTitle}</NavbarBrand>
           <Nav navbar className="mr-auto">
