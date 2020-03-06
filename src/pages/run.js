@@ -87,8 +87,10 @@ const RunPage = () => {
   return (
     <Layout>
       <Seo title="Run Command" />
-      <Row>
-        <h1>Run</h1>
+      <Row className="mb-4">
+        <Col className="text-center">
+          <h1>Run</h1>
+        </Col>
       </Row>
       <Row>
         <Col>
@@ -156,9 +158,6 @@ const RunPage = () => {
           </Form>
         )}
       </Formik>
-      <Row>
-        <Link to="/page-2/">Go to page 2</Link>
-      </Row>
     </Layout>
   )
 }

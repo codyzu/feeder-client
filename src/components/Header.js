@@ -28,18 +28,18 @@ const Header = ({siteTitle, ...props}) => {
 
   return (
     <header>
-      <Navbar light color="light" expand="xs">
+      <Navbar dark color="primary" expand="xs">
         <Container>
-          <NavbarBrand href="#">{siteTitle}</NavbarBrand>
+          <NavbarBrand href="/">{siteTitle}</NavbarBrand>
           <Nav navbar className="mr-auto">
             <NavItem>
-              <Link to="/feed" className="nav-link" activeClassName="active">
-                feed
+              <Link to="/" className="nav-link" activeClassName="active">
+                dashboard
               </Link>
             </NavItem>
             <NavItem>
               <Link to="/log" className="nav-link" activeClassName="active">
-                log
+                logs
               </Link>
             </NavItem>
             <NavItem>

@@ -1,21 +1,109 @@
-import React from "react"
-import {Link} from "gatsby"
+import React, {useContext} from 'react'
+import {FirebaseContext} from 'gatsby-plugin-firebase'
 
-import Layout from "../components/Layout"
-import Image from "../components/Image"
-import Seo from "../components/Seo"
+import {Row, Col, Button} from 'reactstrap'
+import {FaCat, FaCogs, FaPowerOff, FaVideo} from 'react-icons/fa'
+import {IoMdRefresh} from 'react-icons/io'
+import {MdAddAPhoto} from 'react-icons/md'
+import Layout from '../components/Layout'
+import Seo from '../components/Seo'
+import runCommand from '../commands'
+import CommandCard from '../components/CommandCard'
+import ConfirmButton from '../components/ConfirmButton'
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{maxWidth: `300px`, marginBottom: `1.45rem`}}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const Dashboard = () => {
+  const firebase = useContext(FirebaseContext)
 
-export default IndexPage
+  return (
+    <Layout>
+      <Seo title="Dashboard" />
+      <Row className="mb-4">
+        <Col className="text-center">
+          <h1>Dashboard</h1>
+        </Col>
+      </Row>
+      <Row xs="1" md="2" xl="3">
+        <CommandCard
+          HeaderIcon={FaCat}
+          headerText="Feed"
+          commands={[
+            <Button
+              key="big-feed"
+              color="primary"
+              className="w-100"
+              size="lg"
+              onClick={() =>
+                runCommand(firebase, {
+                  command: 'feed',
+                  options: {speed: 400, isForward: true, duration: 3000},
+                })
+              }
+            >
+              <FaCat className="mr-2" size="2em" />
+              <FaCat className="mr-2" size="2em" />
+              Big
+            </Button>,
+            <Button
+              key="small-feed"
+              color="primary"
+              className="w-100"
+              size="lg"
+              onClick={() =>
+                runCommand(firebase, {
+                  command: 'feed',
+                  options: {speed: 400, isForward: true, duration: 1000},
+                })
+              }
+            >
+              <FaCat className="mr-2" />
+              Small
+            </Button>,
+          ]}
+        />
+        <CommandCard
+          HeaderIcon={FaVideo}
+          headerText="Video"
+          commands={[
+            <Button
+              key="take-photo"
+              color="primary"
+              className="w-100"
+              size="lg"
+              onClick={() => console.log('RESTART')}
+            >
+              <MdAddAPhoto className="mr-2" />
+              Take Photo
+            </Button>,
+          ]}
+        />
+        <CommandCard
+          HeaderIcon={FaCogs}
+          headerText="Admin"
+          commands={[
+            <ConfirmButton
+              key="restart"
+              color="primary"
+              className="w-100"
+              size="lg"
+              onClick={() => console.log('RESTART')}
+            >
+              <IoMdRefresh className="mr-2" />
+              Restart
+            </ConfirmButton>,
+            <ConfirmButton
+              key="shutdown"
+              className="w-100"
+              size="lg"
+              color="primary"
+            >
+              <FaPowerOff className="mr-2" />
+              Shutdown
+            </ConfirmButton>,
+          ]}
+        />
+      </Row>
+    </Layout>
+  )
+}
+
+export default Dashboard

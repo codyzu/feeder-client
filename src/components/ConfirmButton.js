@@ -26,13 +26,12 @@ const ConfirmButton = ({onClick = () => undefined, ...props}) => {
     onClick()
   }
 
-  return (
-    <Button
-      color={timeoutId === null ? 'secondary' : 'danger'}
-      onClick={toggle}
-      {...props}
-    />
-  )
+  const buttonProps = {...props}
+  if (timeoutId !== null) {
+    buttonProps.color = 'danger'
+  }
+
+  return <Button onClick={toggle} {...buttonProps} />
 }
 
 export default ConfirmButton
