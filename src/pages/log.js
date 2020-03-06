@@ -3,6 +3,7 @@ import {Link} from 'gatsby'
 import {Table, Row} from 'reactstrap'
 import {DateTime} from 'luxon'
 import {useFirebase} from 'gatsby-plugin-firebase'
+import ReactJson from 'react-json-view'
 
 import Layout from '../components/Layout'
 import Seo from '../components/Seo'
@@ -46,7 +47,7 @@ const LogPage = () => {
         <Table>
           <thead>
             <tr>
-              <th>command</th>
+              <th className="w-auto">command</th>
               <th>created</th>
               <th>completed</th>
               <th>status</th>
@@ -106,7 +107,14 @@ const LogPage = () => {
                       )}
                   </td>
                   <td>{status}</td>
-                  <td>{String(other)}</td>
+                  <td>
+                    <ReactJson
+                      src={other}
+                      collapsed
+                      name={false}
+                      displayDataTypes={false}
+                    />
+                  </td>
                 </tr>
               )
             })}

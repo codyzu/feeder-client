@@ -2,9 +2,14 @@ import React, {useContext} from 'react'
 import {FirebaseContext} from 'gatsby-plugin-firebase'
 
 import {Row, Col, Button} from 'reactstrap'
+import {FaCat, FaCogs, FaPowerOff, FaVideo} from 'react-icons/fa'
+import {IoMdRefresh} from 'react-icons/io'
+import {MdAddAPhoto} from 'react-icons/md'
 import Layout from '../components/Layout'
 import Seo from '../components/Seo'
 import runCommand from '../commands'
+import CommandCard from '../components/CommandCard'
+import ConfirmButton from '../components/ConfirmButton'
 
 const Feed = () => {
   const firebase = useContext(FirebaseContext)
@@ -15,53 +20,79 @@ const Feed = () => {
       <Row>
         <Col className="text-center">
           <h1>Feed the cat 🐈</h1>
-          <p>Welcome to your new Gatsby site.</p>
-          <p>Now go build something great.</p>
+          <p>Choose how much to feed the cat.</p>
         </Col>
       </Row>
-      <Row className="my-3">
-        <Col className="text-center">
-          <Button
-            size="lg"
-            onClick={() =>
-              runCommand(firebase, {
-                command: 'feed',
-                options: {speed: 400, isForward: true, duration: 3000},
-              })
-            }
-          >
-            <span className="my-3">Feed Large</span>
-          </Button>
-        </Col>
-      </Row>
-      <Row className="my-3">
-        <Col className="text-center">
-          <Button
-            onClick={() =>
-              runCommand(firebase, {
-                command: 'feed',
-                options: {speed: 400, isForward: true, duration: 2000},
-              })
-            }
-          >
-            Feed Medium
-          </Button>
-        </Col>
-      </Row>
-      <Row className="my-3">
-        <Col className="text-center">
-          <Button
-            size="sm"
-            onClick={() =>
-              runCommand(firebase, {
-                command: 'feed',
-                options: {speed: 400, isForward: true, duration: 1000},
-              })
-            }
-          >
-            Feed Small
-          </Button>
-        </Col>
+      <Row xs="1" md="2" xl="3">
+        <CommandCard
+          HeaderIcon={FaCat}
+          headerText="Feed"
+          commands={[
+            <Button
+              key="big-feed"
+              className="w-100"
+              size="lg"
+              onClick={() =>
+                runCommand(firebase, {
+                  command: 'feed',
+                  options: {speed: 400, isForward: true, duration: 3000},
+                })
+              }
+            >
+              <FaCat className="mr-2" size="2em" />
+              <FaCat className="mr-2" size="2em" />
+              Big
+            </Button>,
+            <Button
+              key="small-feed"
+              className="w-100"
+              size="lg"
+              onClick={() =>
+                runCommand(firebase, {
+                  command: 'feed',
+                  options: {speed: 400, isForward: true, duration: 1000},
+                })
+              }
+            >
+              <FaCat className="mr-2" />
+              Small
+            </Button>,
+          ]}
+        />
+        <CommandCard
+          HeaderIcon={FaCogs}
+          headerText="Admin"
+          commands={[
+            <ConfirmButton
+              key="restart"
+              className="w-100"
+              size="lg"
+              onClick={() => console.log('RESTART')}
+            >
+              <IoMdRefresh className="mr-2" />
+              Restart
+            </ConfirmButton>,
+            <ConfirmButton key="shutdown" className="w-100" size="lg">
+              <FaPowerOff className="mr-2" />
+              Shutdown
+            </ConfirmButton>,
+          ]}
+        />
+        <CommandCard
+          HeaderIcon={FaVideo}
+          headerText="Video"
+          commands={[
+            <Button
+              key="take-photo"
+              className="w-100"
+              size="lg"
+              onClick={() => console.log('RESTART')}
+            >
+              <MdAddAPhoto className="mr-2" />
+              Take Photo
+            </Button>,
+          ]}
+        />
       </Row>
     </Layout>
   )
