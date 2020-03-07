@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import {FirebaseContext} from 'gatsby-plugin-firebase'
 
 import {Row, Col, Button} from 'reactstrap'
-import {FaCat, FaCogs, FaPowerOff, FaVideo} from 'react-icons/fa'
+import {FaCat, FaCogs, FaPowerOff, FaVideo, FaHandPaper} from 'react-icons/fa'
 import {IoMdRefresh} from 'react-icons/io'
 import {MdAddAPhoto} from 'react-icons/md'
 import Layout from '../components/Layout'
@@ -77,6 +77,15 @@ const Dashboard = () => {
           HeaderIcon={FaCogs}
           headerText="Admin"
           commands={[
+            <Button
+              key="wave"
+              className="w-100"
+              size="lg"
+              onClick={() => runCommand(firebase, {command: 'wave'})}
+            >
+              <FaHandPaper className="mr-2" />
+              Wave
+            </Button>,
             <ConfirmButton
               key="restart"
               className="w-100"

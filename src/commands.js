@@ -1,6 +1,6 @@
 import {DateTime} from 'luxon'
 
-async function runCommand(firebase, {command, options}) {
+async function runCommand(firebase, {command, options = {}}) {
   const commandData = {
     command,
     options,

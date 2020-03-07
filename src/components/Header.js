@@ -29,7 +29,7 @@ const Header = ({siteTitle, ...props}) => {
   return (
     <header>
       <Navbar dark color="dark" expand="xs">
-        <Container>
+        <Container className="text-warning">
           <NavbarBrand href="/">{siteTitle}</NavbarBrand>
           <Nav navbar className="mr-auto">
             <NavItem>
@@ -47,9 +47,6 @@ const Header = ({siteTitle, ...props}) => {
                 command
               </Link>
             </NavItem>
-            {/* <Link to="/vote" className="nav-link" activeClassName="active">
-              Vote
-            </Link> */}
           </Nav>
           <Form inline className="my-0">
             {user ? (
