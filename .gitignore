@@ -70,3 +70,4 @@ yarn-error.log
 
 .github-token
 .firebaserc
+.travis-token
