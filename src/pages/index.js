@@ -87,17 +87,31 @@ const Dashboard = () => {
               Wave
             </Button>,
             <ConfirmButton
-              key="restart"
+              key="restart daemon"
               className="w-100"
               size="lg"
-              onClick={() => console.log('RESTART')}
+              onClick={() => runCommand(firebase, {command: 'exit'})}
             >
               <IoMdRefresh className="mr-2" />
-              Restart
+              Restart Daemon
             </ConfirmButton>,
-            <ConfirmButton key="shutdown" className="w-100" size="lg">
+            <ConfirmButton
+              key="reboot system"
+              className="w-100"
+              size="lg"
+              onClick={() => runCommand(firebase, {command: 'reboot'})}
+            >
+              <IoMdRefresh className="mr-2" />
+              Reboot System
+            </ConfirmButton>,
+            <ConfirmButton
+              key="shutdown"
+              className="w-100"
+              size="lg"
+              onClick={() => runCommand(firebase, {command: 'shutdown'})}
+            >
               <FaPowerOff className="mr-2" />
-              Shutdown
+              Shutdown System
             </ConfirmButton>,
           ]}
         />
