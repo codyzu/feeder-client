@@ -31,8 +31,8 @@ service cloud.firestore {
     }
     
     match /feeders/{feederId} {
-    	allow read: if (request.auth.uid == feederId || isAdmin());
-      allow write: if request.auth.uid == feederId;
+    	allow read: if isAdmin();
+      allow update: if request.auth.uid == feederId;
     }
   }
 }
