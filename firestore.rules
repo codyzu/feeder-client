@@ -29,5 +29,10 @@ service cloud.firestore {
     match /jobsSchedule/{document} {
     	allow read, write: if (isAdmin() || isFeeder());
     }
+    
+    match /feeders/{feederId} {
+    	allow read: if (request.auth.uid == feederId || isAdmin());
+      allow write: if request.auth.uid == feederId;
+    }
   }
 }
