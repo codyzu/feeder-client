@@ -60,16 +60,16 @@ const Dashboard = () => {
         />
         <CommandCard
           HeaderIcon={FaVideo}
-          headerText="Video"
+          headerText="Image"
           commands={[
             <Button
-              key="take-photo"
+              key="image"
               className="w-100"
               size="lg"
-              onClick={() => console.log('RESTART')}
+              onClick={() => runCommand(firebase, {command: 'image'})}
             >
               <MdAddAPhoto className="mr-2" />
-              Take Photo
+              Capture Image
             </Button>,
           ]}
         />

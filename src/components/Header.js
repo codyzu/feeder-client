@@ -15,7 +15,7 @@ import {
 import {FirebaseContext} from 'gatsby-plugin-firebase'
 import * as firebasePackage from 'firebase/app'
 import UserContext from '../user-context'
-// import auth from "../firebase-auth"
+// Import auth from "../firebase-auth"
 
 const Header = ({siteTitle, ...props}) => {
   const firebase = useContext(FirebaseContext)
@@ -35,6 +35,11 @@ const Header = ({siteTitle, ...props}) => {
             <NavItem>
               <Link to="/" className="nav-link" activeClassName="active">
                 dashboard
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/images" className="nav-link" activeClassName="active">
+                image
               </Link>
             </NavItem>
             <NavItem>

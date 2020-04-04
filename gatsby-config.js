@@ -36,6 +36,7 @@ module.exports = {
         features: {
           auth: true,
           firestore: true,
+          storage: true,
         },
       },
     },
