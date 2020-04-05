@@ -36,6 +36,7 @@
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "firebase-tools": "^7.13.0",
+    "git-cz": "^4.3.1",
     "prettier": "^1.19.1",
     "xo": "^0.25.3"
   },
@@ -50,7 +51,8 @@
     "start": "yarn run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "commit": "git-cz"
   },
   "repository": "github:codyzu/feeder-client",
   "bugs": {
