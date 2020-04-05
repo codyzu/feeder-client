@@ -27,7 +27,7 @@ const Layout = ({children}) => {
   `)
 
   return (
-    <>
+    <Container fluid className="bg-dark min-vh-100">
       <Header siteTitle={data.site.siteMetadata.title} />
       <Container className="mt-4">
         <main>{children}</main>
@@ -48,7 +48,7 @@ const Layout = ({children}) => {
           </Row>
         </footer>
       </Container>
-    </>
+    </Container>
   )
 }
 

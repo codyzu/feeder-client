@@ -32,7 +32,11 @@ const Header = ({siteTitle}) => {
     <header>
       <Navbar dark color="dark" expand="md">
         <Container className="text-warning">
-          <NavbarBrand href="/">{siteTitle}</NavbarBrand>
+          <NavbarBrand href="/">
+            <span className="h1 mb-0" style={{borderBottom: '4px solid'}}>
+              {siteTitle}
+            </span>
+          </NavbarBrand>
           <NavbarToggler onClick={() => setIsExpanded(!isExpanded)} />
           <Collapse navbar isOpen={isExpanded}>
             <Nav navbar className="mr-auto">
@@ -61,16 +65,22 @@ const Header = ({siteTitle}) => {
                 </Link>
               </NavItem>
             </Nav>
+            <Form inline className="my-0">
+              {user ? (
+                <Button
+                  outline
+                  color="warning"
+                  onClick={() => firebase.auth().signOut()}
+                >
+                  <img src={user.photoUrl} width="20" height="20" /> Sign Out
+                </Button>
+              ) : (
+                <Button outline color="warning" onClick={() => signIn()}>
+                  Sign In
+                </Button>
+              )}
+            </Form>
           </Collapse>
-          <Form inline className="my-0">
-            {user ? (
-              <Button onClick={() => firebase.auth().signOut()}>
-                <img src={user.photoUrl} width="20" height="20" /> Sign Out
-              </Button>
-            ) : (
-              <Button onClick={() => signIn()}>Sign In</Button>
-            )}
-          </Form>
         </Container>
       </Navbar>
     </header>
