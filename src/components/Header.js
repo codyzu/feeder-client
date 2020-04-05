@@ -1,6 +1,6 @@
 import {Link} from 'gatsby'
 import PropTypes from 'prop-types'
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {
   Container,
   Nav,
@@ -8,16 +8,16 @@ import {
   NavbarBrand,
   Button,
   Form,
-  NavLink,
+  Collapse,
   NavItem,
+  NavbarToggler,
 } from 'reactstrap'
 
 import {FirebaseContext} from 'gatsby-plugin-firebase'
 import * as firebasePackage from 'firebase/app'
 import UserContext from '../user-context'
-// Import auth from "../firebase-auth"
 
-const Header = ({siteTitle, ...props}) => {
+const Header = ({siteTitle}) => {
   const firebase = useContext(FirebaseContext)
   const user = useContext(UserContext)
 
@@ -26,33 +26,42 @@ const Header = ({siteTitle, ...props}) => {
     firebase.auth().signInWithRedirect(provider)
   }
 
+  const [isExpanded, setIsExpanded] = useState(false)
+
   return (
     <header>
-      <Navbar dark color="dark" expand="xs">
+      <Navbar dark color="dark" expand="md">
         <Container className="text-warning">
           <NavbarBrand href="/">{siteTitle}</NavbarBrand>
-          <Nav navbar className="mr-auto">
-            <NavItem>
-              <Link to="/" className="nav-link" activeClassName="active">
-                dashboard
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/images" className="nav-link" activeClassName="active">
-                image
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/log" className="nav-link" activeClassName="active">
-                logs
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/run" className="nav-link" activeClassName="active">
-                command
-              </Link>
-            </NavItem>
-          </Nav>
+          <NavbarToggler onClick={() => setIsExpanded(!isExpanded)} />
+          <Collapse navbar isOpen={isExpanded}>
+            <Nav navbar className="mr-auto">
+              <NavItem>
+                <Link to="/" className="nav-link" activeClassName="active">
+                  dashboard
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link
+                  to="/images"
+                  className="nav-link"
+                  activeClassName="active"
+                >
+                  image
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link to="/log" className="nav-link" activeClassName="active">
+                  logs
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link to="/run" className="nav-link" activeClassName="active">
+                  command
+                </Link>
+              </NavItem>
+            </Nav>
+          </Collapse>
           <Form inline className="my-0">
             {user ? (
               <Button onClick={() => firebase.auth().signOut()}>

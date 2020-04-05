@@ -56,6 +56,7 @@ const Dashboard = () => {
         return
       }
 
+      // Get the current state of the live stream from the DB
       const doc = await firebase
         .firestore()
         .collection('jobsSchedule')
@@ -85,7 +86,7 @@ const Dashboard = () => {
             id="exampleCustomSwitch"
             name="customSwitch"
             label="Live Stream"
-            valid={isLive === true}
+            checked={isLive === true}
             onChange={() => toggleLive()}
           />
         </Col>
